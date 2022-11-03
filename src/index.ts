@@ -3,7 +3,8 @@ import morgan from "morgan";
 import * as dotenv from "dotenv";
 import getThings from "./controllers/getThings.js";
 import notFound from "./middlewares/errors.js";
-import getThingsById from "./controllers/getThingsById.js";
+import getThingById from "./controllers/getThingById.js";
+import deleteThingById from "./controllers/deleteThingById.js";
 
 dotenv.config();
 
@@ -18,7 +19,8 @@ app.use(morgan("dev"));
 app.use(express.json());
 
 app.get("/things", getThings);
-app.get("/things/:idThing", getThingsById);
+app.get("/things/:idThing", getThingById);
+app.delete("/things/:idThing", deleteThingById);
 
 app.use(notFound);
 
