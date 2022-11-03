@@ -7,6 +7,12 @@ const getThingById = (req: Request, res: Response) => {
     // eslint-disable-next-line no-implicit-coercion
     (thing) => thing.id === +idThing
   );
+
+  if (!thingToFindById) {
+    res.status(404).json({ message: `thing with id: ${idThing} not found` });
+    return;
+  }
+
   res.status(200).json({ thingToFindById });
 };
 
