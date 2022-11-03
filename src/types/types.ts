@@ -1,8 +1,8 @@
 export interface ThingThatiKnow {
-  things: Subject[];
+  things: Thing[];
 }
 
-interface Subject {
+interface Thing {
   subject: string;
   id: number;
 }
