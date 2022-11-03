@@ -1,7 +1,8 @@
 import express from "express";
 import morgan from "morgan";
 import * as dotenv from "dotenv";
-import thingsThatiKnow from "./data/thingsThatIKnow.js";
+import getThings from "./controllers/getThings.js";
+import notFound from "./middlewares/errors.js";
 
 dotenv.config();
 
@@ -15,9 +16,9 @@ app.use(morgan("dev"));
 
 app.use(express.json());
 
-app.get("/things", (req, res) => {
-  res.status(200).json(thingsThatiKnow);
-});
+app.get("/things", getThings);
+
+app.use(notFound);
 
 app.listen(port, () => {
   log("Server is listening");
